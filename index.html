@@ -433,6 +433,7 @@
       position: relative;
       scroll-margin-top: 80px;
     }
+    .showcase-section#music { scroll-margin-top: 700px; }
 
     .section-label {
       display: inline-flex;
@@ -1362,6 +1363,7 @@
 
       .hero { padding: 120px 20px 60px; }
       section { scroll-margin-top: 64px; }
+      .showcase-section#music { scroll-margin-top: 700px; }
       .hero-content h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
       .hero-sub-line { font-size: clamp(1.2rem, 5vw, 2rem); letter-spacing: 4px; }
 
@@ -1374,7 +1376,8 @@
         overflow-y: auto;
       }
       .showcase-slide { grid-template-columns: 1fr; gap: 12px; padding: 16px; }
-      .sc-visual { aspect-ratio: 16/9; max-height: 40vh; }
+      .sc-visual { aspect-ratio: 16/9; max-height: 40vh; min-height: 180px; }
+      .sc-visual video { min-height: 180px; }
 
       .showcase-section .sc-desc { font-size: 0.6rem; }
 
@@ -1383,7 +1386,7 @@
         overflow-y: auto;
       }
       .portfolio-slide { flex-direction: column; min-height: auto; }
-      .portfolio-slide .pf-visual { flex: none; max-width: 100%; max-height: 50vh; }
+      .portfolio-slide .pf-visual { flex: none; max-width: 100%; max-height: 50vh; aspect-ratio: 16/9; }
       .portfolio-slide .pf-info { padding: 24px 20px; }
 
       .services-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -2160,6 +2163,12 @@
       <!-- HIP-HOP -->
       <div class="music-track active" id="track-hiphop">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-hiphop">
+              <source src="media/Gaming%20Hymne.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/Gaming%20Hymne.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="hiphop">
             <canvas id="viz-hiphop"></canvas>
             <div class="viz-placeholder">
@@ -2181,18 +2190,18 @@
           <div class="track-desc" data-i18n="t-hiphop-desc">
             „Der perfekte Beat für deinen Gaming-Stream, dein Intro oder deinen nächsten Highlight-Rewind. Produziert für die, die am Ball bleiben."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-hiphop">
-              <source src="media/Gaming%20Hymne.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/Gaming%20Hymne.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- ELECTRONIC -->
       <div class="music-track" id="track-electronic">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-electronic">
+              <source src="media/Firmen-Jingle.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/Firmen-Jingle.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="electronic">
             <canvas id="viz-electronic"></canvas>
             <div class="viz-placeholder">
@@ -2214,18 +2223,18 @@
           <div class="track-desc" data-i18n="t-electronic-desc">
             „Der perfekte Sound für dein Branding. Modern, klar, professionell – dein Jingle, der im Kopf bleibt."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-electronic">
-              <source src="media/Firmen-Jingle.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/Firmen-Jingle.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- ROCK -->
       <div class="music-track" id="track-rock">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-rock">
+              <source src="media/Motivationslied.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/Motivationslied.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="rock">
             <canvas id="viz-rock"></canvas>
             <div class="viz-placeholder">
@@ -2247,18 +2256,18 @@
           <div class="track-desc" data-i18n="t-rock-desc">
             „Der Soundtrack für alle, die Grenzen sprengen wollen. Für dein nächstes Workout, dein Team-Event oder einfach, wenn du Bock auf Power hast."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-rock">
-              <source src="media/Motivationslied.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/Motivationslied.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- LOVE -->
       <div class="music-track" id="track-love">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-love">
+              <source src="media/Hochzeit%20Personalisiert.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/Hochzeit%20Personalisiert.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="love">
             <canvas id="viz-love"></canvas>
             <div class="viz-placeholder">
@@ -2280,18 +2289,18 @@
           <div class="track-desc" data-i18n="t-love-desc">
             „Der Song für den schönsten Tag deines Lebens. Personalisiert mit euren Namen, eurem Datum – für immer euer Lied."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-love">
-              <source src="media/Hochzeit%20Personalisiert.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/Hochzeit%20Personalisiert.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- PARTY -->
       <div class="music-track" id="track-party">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-party">
+              <source src="media/PARTY%20CLUB%20Lied.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/PARTY%20CLUB%20Lied.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="party">
             <canvas id="viz-party"></canvas>
             <div class="viz-placeholder">
@@ -2313,18 +2322,18 @@
           <div class="track-desc" data-i18n="t-party-desc">
             „Die Hymne für deine nächste Party. Lass den Dancefloor beben – mit deinem eigenen Club-Hit."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-party">
-              <source src="media/PARTY%20CLUB%20Lied.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/PARTY%20CLUB%20Lied.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- WORKOUT -->
       <div class="music-track" id="track-workout">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-workout">
+              <source src="media/Workout.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/Workout.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="workout">
             <canvas id="viz-workout"></canvas>
             <div class="viz-placeholder">
@@ -2346,18 +2355,18 @@
           <div class="track-desc" data-i18n="t-workout-desc">
             „Dein persönlicher Push für die letzte Wiederholung. Treibende Beats, die dich durch jedes Set bringen."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-workout">
-              <source src="media/Workout.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/Workout.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- SCHOOL -->
       <div class="music-track" id="track-schull">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-schull">
+              <source src="media/Schulle%20ABSCHLUSS.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/Schulle%20ABSCHLUSS.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="schull">
             <canvas id="viz-schull"></canvas>
             <div class="viz-placeholder">
@@ -2379,18 +2388,18 @@
           <div class="track-desc" data-i18n="t-schull-desc">
             „Der Soundtrack für deinen Abschluss. Für alle, die ein Kapitel schließen und ein neues aufschlagen."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-schull">
-              <source src="media/Schulle%20ABSCHLUSS.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/Schulle%20ABSCHLUSS.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- KIDS -->
       <div class="music-track" id="track-kinder">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-kinder">
+              <source src="media/KINDERLIED.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/KINDERLIED.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="kinder">
             <canvas id="viz-kinder"></canvas>
             <div class="viz-placeholder">
@@ -2412,18 +2421,18 @@
           <div class="track-desc" data-i18n="t-kinder-desc">
             „Ein fröhlicher Song für die Kleinsten. Bunt, verspielt und voller Fantasie – zum Mitsingen und Tanzen."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-kinder">
-              <source src="media/KINDERLIED.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/KINDERLIED.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- LULLABY -->
       <div class="music-track" id="track-einschlaf">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-einschlaf">
+              <source src="media/Kinder%20Einschlaflied.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/Kinder%20Einschlaflied.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="einschlaf">
             <canvas id="viz-einschlaf"></canvas>
             <div class="viz-placeholder">
@@ -2445,18 +2454,18 @@
           <div class="track-desc" data-i18n="t-einschlaf-desc">
             „Sanfte Klänge für den Weg ins Träumeland. Beruhigend, warm und voller Geborgenheit."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-einschlaf">
-              <source src="media/Kinder%20Einschlaflied.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/Kinder%20Einschlaflied.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- X-MAS -->
       <div class="music-track" id="track-weihnachten">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-weihnachten">
+              <source src="media/WEIHNACHTEN.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/WEIHNACHTEN.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="weihnachten">
             <canvas id="viz-weihnachten"></canvas>
             <div class="viz-placeholder">
@@ -2478,18 +2487,18 @@
           <div class="track-desc" data-i18n="t-weihnachten-desc">
             „Weihnachtszauber in digitalem Gewand. Besinnliche Klänge für die schönste Zeit des Jahres."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-weihnachten">
-              <source src="media/WEIHNACHTEN.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/WEIHNACHTEN.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- PET -->
       <div class="music-track" id="track-haustier">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-haustier">
+              <source src="media/Haustier%20Personalisiert.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/Haustier%20Personalisiert.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="haustier">
             <canvas id="viz-haustier"></canvas>
             <div class="viz-placeholder">
@@ -2511,18 +2520,18 @@
           <div class="track-desc" data-i18n="t-haustier-desc">
             „Ein Lied für deinen besten Freund auf vier Pfoten. Herzlich, verspielt und voller Liebe."
           </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-haustier">
-              <source src="media/Haustier%20Personalisiert.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/Haustier%20Personalisiert.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
-          </div>
         </div>
       </div>
 
       <!-- HUMOR -->
       <div class="music-track" id="track-scherz">
         <div class="music-player">
+          <div class="track-controls">
+            <audio controls data-viz-id="viz-scherz">
+              <source src="media/Scherz%20Song.mp3" type="audio/mpeg">
+            </audio>
+            <a class="track-download" href="media/Scherz%20Song.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
+          </div>
           <div class="track-visualizer" data-track="scherz">
             <canvas id="viz-scherz"></canvas>
             <div class="viz-placeholder">
@@ -2543,12 +2552,6 @@
           </div>
           <div class="track-desc" data-i18n="t-scherz-desc">
             „Das perfekte Scherzgeschenk. Ein Song, der garantiert für Lacher sorgt – absurd, witzig und komplett personalisiert."
-          </div>
-          <div class="track-controls">
-            <audio controls data-viz-id="viz-scherz">
-              <source src="media/Scherz%20Song.mp3" type="audio/mpeg">
-            </audio>
-            <a class="track-download" href="media/Scherz%20Song.mp3" download>⬇ <span data-i18n="track-dl">Download</span></a>
           </div>
         </div>
       </div>
@@ -2870,6 +2873,17 @@
         document.getElementById('navLinks').classList.remove('open');
       });
     });
+    // Nav-Sprung zu Music-Section: sicherstellen dass Audio-Controls sichtbar sind
+    document.querySelectorAll('a[href="#music"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var section = document.getElementById('music');
+        if (section) {
+          var top = section.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
     // Schließen bei Klick außerhalb
     document.addEventListener('click', function(e) {
       var nav = document.getElementById('navbar');
@@ -2952,28 +2966,99 @@
         if (!c.el) return;
         var state = { running: true };
         _carousels[c.id] = state;
-        function getVideoDuration(slide) {
-          var v = slide && slide.querySelector('video');
-          if (!v) return 0;
-          return v.duration && isFinite(v.duration) ? v.duration * 1000 : 10000;
+        var activeTimer = null;
+
+        function advance() {
+          if (!state.running) return;
+          var maxScroll = c.el.scrollWidth - c.el.clientWidth;
+          c.el.scrollLeft >= maxScroll - 5 ? c.el.scrollTo({ left: 0, behavior: 'smooth' }) : c.el.scrollBy({ left: c.el.clientWidth, behavior: 'smooth' });
+          // Nach dem Scrollen das nächste schedule starten
+          setTimeout(schedule, 400);
         }
-        (function schedule() {
+
+        function waitAndAdvance(slide, fallbackInterval) {
+          var video = slide && slide.querySelector('video');
+          if (video) {
+            // Video-Slide: warte auf Ende des aktuellen Durchlaufs
+            // loop temporär deaktivieren, damit ended-Event feuert
+            var hadLoop = video.loop;
+            video.loop = false;
+            video._loopState = hadLoop;
+            var endedHandler = function() {
+              video.loop = hadLoop;
+              video.removeEventListener('ended', endedHandler);
+              video.removeEventListener('error', errorHandler);
+              advance();
+            };
+            var errorHandler = function() {
+              video.loop = hadLoop;
+              video.removeEventListener('ended', endedHandler);
+              video.removeEventListener('error', errorHandler);
+              advance();
+            };
+            // Handler für cancelAuto registrieren
+            if (!video._endedHandlers) video._endedHandlers = [];
+            video._endedHandlers.push(endedHandler);
+            video._endedHandlers.push(errorHandler);
+            // Video abspielen (zurück zum Anfang)
+            video.currentTime = 0;
+            var playPromise = video.play();
+            if (playPromise) {
+              playPromise.catch(function() {
+                // Autoplay blockiert (z.B. auf Mobil) – Fallback auf festes Intervall
+                video.loop = hadLoop;
+                video.removeEventListener('ended', endedHandler);
+                video.removeEventListener('error', errorHandler);
+                activeTimer = setTimeout(advance, fallbackInterval);
+              });
+            }
+            video.addEventListener('ended', endedHandler);
+            video.addEventListener('error', errorHandler);
+          } else {
+            // Bild-Slide: festes Intervall
+            activeTimer = setTimeout(advance, fallbackInterval);
+          }
+        }
+
+        function schedule() {
           var slides = c.el.querySelectorAll('.showcase-slide, .portfolio-slide');
           var idx = Math.round(c.el.scrollLeft / c.el.clientWidth);
-          var interval = getVideoDuration(slides[idx]) || c.interval;
-          var id = setInterval(function() {
-            if (!state.running) return;
-            var maxScroll = c.el.scrollWidth - c.el.clientWidth;
-            c.el.scrollLeft >= maxScroll - 5 ? c.el.scrollTo({ left: 0, behavior: 'smooth' }) : c.el.scrollBy({ left: c.el.clientWidth, behavior: 'smooth' });
-            clearInterval(id);
-            schedule();
-          }, interval);
-        })();
-        c.el.addEventListener('mousedown', function() { state.running = false; });
-        c.el.addEventListener('mouseup', function() { state.running = true; });
-        c.el.addEventListener('mouseleave', function() { state.running = true; });
-        c.el.addEventListener('touchstart', function() { state.running = false; });
-        c.el.addEventListener('touchend', function() { state.running = true; });
+          var currentSlide = slides[idx];
+          waitAndAdvance(currentSlide, c.interval);
+        }
+        schedule();
+
+        // Benutzer-Interaktion: Timer/Video abbrechen
+        function cancelAuto() {
+          state.running = false;
+          if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
+          // Video-Listener aufräumen (alle Videos im Karussell) + loop wiederherstellen
+          var allVids = c.el.querySelectorAll('video');
+          allVids.forEach(function(v) {
+            if (v._loopState !== undefined) { v.loop = v._loopState; v._loopState = undefined; }
+            var clones = v._endedHandlers || [];
+            clones.forEach(function(h) {
+              v.removeEventListener('ended', h);
+              v.removeEventListener('error', h);
+            });
+            v._endedHandlers = null;
+          });
+        }
+        function resumeAuto() {
+          state.running = true;
+          // Falls kein Timer läuft und kein Video abgespielt wird, schedule neu
+          if (!activeTimer) {
+            var allVids = c.el.querySelectorAll('video');
+            var anyPlaying = false;
+            allVids.forEach(function(v) { if (!v.paused) anyPlaying = true; });
+            if (!anyPlaying) { schedule(); }
+          }
+        }
+        c.el.addEventListener('mousedown', cancelAuto);
+        c.el.addEventListener('mouseup', resumeAuto);
+        c.el.addEventListener('mouseleave', resumeAuto);
+        c.el.addEventListener('touchstart', cancelAuto);
+        c.el.addEventListener('touchend', resumeAuto);
       });
     });
 
