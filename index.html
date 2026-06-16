@@ -266,8 +266,8 @@
       gap: 5px;
       cursor: pointer;
       padding: 8px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 10px;
       position: relative;
       z-index: 1101;
@@ -1156,7 +1156,23 @@
       border-bottom: 1px solid rgba(255,255,255,0.03);
       overflow-x: auto;
       flex-wrap: wrap;
+      position: relative;
     }
+    /* Scroll-Hinweis für Mobile (overlay Pfeil rechts) */
+    .music-genre-tabs::after {
+      content: '→ Scroll';
+      position: sticky; right: 0; top: 0; z-index: 2;
+      background: linear-gradient(270deg, rgba(10,12,26,0.95) 50%, transparent);
+      padding: 12px 14px 12px 30px;
+      font-size: 0.55rem; letter-spacing: 1px;
+      color: var(--cyan); pointer-events: none;
+      white-space: nowrap; text-transform: uppercase;
+      opacity: 0; transition: opacity 0.4s;
+    }
+    @media (pointer: coarse) {
+      .music-genre-tabs::after { opacity: 1; }
+    }
+    .music-genre-tabs.scrolled-end::after { opacity: 0; }
     .music-genre-tabs button {
       font-family: var(--font-body);
       font-size: 0.65rem; letter-spacing: 2px;
@@ -1171,6 +1187,8 @@
     .music-genre-tabs button.active { color: var(--cyan); border-bottom-color: var(--cyan); }
     .music-track { display: none; }
     .music-track.active { display: block; }
+    /* iOS safe-area: audio in hidden tracks trotzdem Min-Höhe */
+    .music-track audio { min-height: 48px; width: 100%; }
     .music-waveform {
       display: flex; align-items: center; gap: 3px;
       height: 40px; margin-bottom: 20px;
@@ -2953,6 +2971,7 @@
     // MUSIC GENRE TABS
     document.addEventListener('DOMContentLoaded', function() {
       var tabs = document.querySelectorAll('.music-genre-tabs button');
+      var genreContainer = document.getElementById('genreTabs');
       tabs.forEach(function(btn) {
         btn.addEventListener('click', function() {
           tabs.forEach(function(b) { b.classList.remove('active'); });
@@ -2963,6 +2982,18 @@
           if (target) target.classList.add('active');
         });
       });
+      // Scroll-End-Erkennung: Pfeil ausblenden wenn am Ende
+      if (genreContainer) {
+        genreContainer.addEventListener('scroll', function() {
+          var maxScroll = this.scrollWidth - this.clientWidth;
+          this.classList.toggle('scrolled-end', this.scrollLeft >= maxScroll - 10);
+        });
+        // Initial-Check
+        setTimeout(function() {
+          var maxScroll = genreContainer.scrollWidth - genreContainer.clientWidth;
+          genreContainer.classList.toggle('scrolled-end', genreContainer.scrollLeft >= maxScroll - 10);
+        }, 100);
+      }
     });
 
     // WEBAUDIO VISUALIZER
