@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" style="color-scheme:dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -266,17 +266,20 @@
       gap: 6px;
       cursor: pointer;
       padding: 10px;
-      background: linear-gradient(135deg, rgba(0,229,255,0.18), rgba(0,229,255,0.08));
+      background: rgba(0,229,255,0.15);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(0,229,255,0.25);
+      border: 1px solid rgba(0,229,255,0.3);
       border-radius: 10px;
       position: relative;
       z-index: 1101;
       transition: var(--transition);
       box-shadow: 0 2px 12px rgba(0,229,255,0.10);
+      /* Chrome Auto Dark Mode verhindern */
+      color-scheme: only dark;
+      -webkit-color-scheme: dark;
     }
-    .hamburger:hover { background: linear-gradient(135deg, rgba(0,229,255,0.25), rgba(0,229,255,0.12)); border-color: rgba(0,229,255,0.4); }
+    .hamburger:hover { background: rgba(0,229,255,0.22); border-color: rgba(0,229,255,0.45); }
     .hamburger span {
       width: 22px; height: 3px;
       background: #ffffff;
