@@ -1332,9 +1332,19 @@
       .showcase-section { padding: 20px 0 !important; }
       .showcase-section.sc-full { display: block; }
 
-      .showcase-slide { grid-template-columns: 1fr; gap: 16px; padding: 20px; }
-      .sc-visual { aspect-ratio: 4/3; }
+      .showcase-carousel {
+        max-height: 80dvh;
+        overflow-y: auto;
+      }
+      .showcase-slide { grid-template-columns: 1fr; gap: 12px; padding: 16px; }
+      .sc-visual { aspect-ratio: 16/9; max-height: 40vh; }
 
+      .showcase-section .sc-desc { font-size: 0.6rem; }
+
+      .portfolio-carousel {
+        max-height: 80dvh;
+        overflow-y: auto;
+      }
       .portfolio-slide { flex-direction: column; min-height: auto; }
       .portfolio-slide .pf-visual { flex: none; max-width: 100%; max-height: 50vh; }
       .portfolio-slide .pf-info { padding: 24px 20px; }
@@ -1367,6 +1377,8 @@
       .track-download { align-self: stretch; justify-content: center; }
       .track-visualizer { height: 100px; }
       .track-desc { font-size: 0.75rem; }
+      .showcase-section .sc-desc { font-size: 0.55rem; }
+      .sc-nav button { padding: 8px 18px; font-size: 0.65rem; }
       .lightbox { padding: 16px; }
       .lightbox-close { top: 12px; right: 16px; font-size: 1.6rem; padding: 6px 12px; }
       .pricing-grid { grid-template-columns: 1fr; }
