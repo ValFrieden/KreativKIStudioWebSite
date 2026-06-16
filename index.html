@@ -1308,7 +1308,11 @@
        RESPONSIVE
        ============================================= */
     @media (max-width: 768px) {
-      nav { top: 8px; width: calc(100% - 16px); padding: 0 16px; height: 56px; border-radius: 16px; }
+      nav { top: 8px; width: calc(100% - 16px); padding: 0 12px; height: 52px; border-radius: 16px; }
+      .nav-logo { font-size: 0.85rem; letter-spacing: 2px; }
+      .nav-logo .logo-suffix { display: none; }
+      .lang-switch { margin-right: 6px; gap: 1px; }
+      .lang-switch button { font-size: 0.45rem; padding: 3px 5px; letter-spacing: 0.5px; }
       .hamburger { display: flex; }
       .nav-links {
         position: fixed; top: 72px; left: 8px; right: 8px;
@@ -1361,7 +1365,9 @@
     }
 
     @media (max-width: 480px) {
-      nav { height: 52px; }
+      nav { height: 48px; padding: 0 10px !important; }
+      .nav-logo { font-size: 0.75rem; letter-spacing: 1.5px; }
+      .lang-switch button { font-size: 0.4rem; padding: 2px 4px; }
       .hero-content h1 { font-size: 2rem; }
       .hero-sub-line { font-size: 1rem; letter-spacing: 3px; }
       .section-title { font-size: 1.8rem; }
@@ -1447,7 +1453,7 @@
 
   <!-- NAV -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">Kreativ<span>KI</span> Studio</a>
+    <a href="#" class="nav-logo">Kreativ<span>KI</span><span class="logo-suffix"> Studio</span></a>
     <div class="lang-switch" id="langSwitch">
       <button data-lang="de" class="active" onclick="switchLanguage('de')">DE</button>
       <button data-lang="en" onclick="switchLanguage('en')">EN</button>
