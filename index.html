@@ -268,6 +268,8 @@
       padding: 4px;
       background: none;
       border: none;
+      position: relative;
+      z-index: 1101;
     }
     .hamburger span {
       width: 24px; height: 2px;
@@ -1317,6 +1319,7 @@
       .nav-links {
         position: fixed; top: calc(env(safe-area-inset-top, 8px) + 60px); left: 8px; right: 8px;
         flex-direction: column;
+        z-index: 1100;
         background: rgba(10,12,26,0.92);
         backdrop-filter: blur(40px);
         padding: 12px; gap: 0;
@@ -2825,16 +2828,35 @@
     });
 
     // HAMBURGER
-    document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('hamburger').addEventListener('click', function(e) {
+      e.stopPropagation();
       this.classList.toggle('open');
       document.getElementById('navLinks').classList.toggle('open');
     });
     document.querySelectorAll('.nav-links a').forEach(a => {
-      a.addEventListener('click', () => {
+      a.addEventListener('click', function() {
         document.getElementById('hamburger').classList.remove('open');
         document.getElementById('navLinks').classList.remove('open');
       });
     });
+    // Schließen bei Klick außerhalb
+    document.addEventListener('click', function(e) {
+      var nav = document.getElementById('navbar');
+      var links = document.getElementById('navLinks');
+      if (!nav.contains(e.target) && links.classList.contains('open')) {
+        document.getElementById('hamburger').classList.remove('open');
+        links.classList.remove('open');
+      }
+    });
+    // Schließen bei Scroll
+    var lastScroll = 0;
+    window.addEventListener('scroll', function() {
+      var links = document.getElementById('navLinks');
+      if (links.classList.contains('open')) {
+        document.getElementById('hamburger').classList.remove('open');
+        links.classList.remove('open');
+      }
+    }, { passive: true });
 
     // SCROLL REVEAL
     const observer = new IntersectionObserver(entries => {
