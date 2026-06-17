@@ -3004,47 +3004,50 @@
 
         function waitAndAdvance(slide, fallbackInterval) {
           var video = slide && slide.querySelector('video');
+          // Festes Intervall: nach Ablauf wird auf jeden Fall weitergeschaltet
+          activeTimer = setTimeout(advance, fallbackInterval);
+
           if (video) {
-            // Video-Slide: warte auf Ende des aktuellen Durchlaufs
-            // loop temporär deaktivieren, damit ended-Event feuert
+            // Optional: Video-Ende kann das Weiterschalten beschleunigen
+            // (falls Autoplay erlaubt ist und das Video kürzer als das Intervall ist)
             var hadLoop = video.loop;
-            video.loop = false;
+            video.loop = true; // loop an lassen — das ist sicherer
             video._loopState = hadLoop;
             var endedHandler = function() {
+              if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
               video.loop = hadLoop;
               video.removeEventListener('ended', endedHandler);
               video.removeEventListener('error', errorHandler);
               advance();
             };
             var errorHandler = function() {
+              if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
               video.loop = hadLoop;
               video.removeEventListener('ended', endedHandler);
               video.removeEventListener('error', errorHandler);
               advance();
             };
-            // Handler für cancelAuto registrieren
             if (!video._endedHandlers) video._endedHandlers = [];
             video._endedHandlers.push(endedHandler);
             video._endedHandlers.push(errorHandler);
-            // Video abspielen (zurück zum Anfang)
             video.currentTime = 0;
             var playPromise = video.play();
             if (playPromise) {
-              playPromise.catch(function() {
-                // Autoplay blockiert (z.B. auf Mobil) – Fallback auf festes Intervall
-                video.loop = hadLoop;
-                video.removeEventListener('ended', endedHandler);
-                video.removeEventListener('error', errorHandler);
-                activeTimer = setTimeout(advance, fallbackInterval);
-              });
+              playPromise.catch(function() { /* Autoplablockiert – setzt auf festes Intervall */ });
             }
             video.addEventListener('ended', endedHandler);
             video.addEventListener('error', errorHandler);
-          } else {
-            // Bild-Slide: festes Intervall
-            activeTimer = setTimeout(advance, fallbackInterval);
           }
         }
+
+        // watchAuto: periodischer Watchdog (alle 4s) – startet tote Carousels neu
+        // Wichtig: nur wenn state.running && kein Timer/scrollend pending ist
+        var watchTimer = setInterval(function() {
+          if (!state.running) return;
+          if (!activeTimer && !scrollEndHandler && !scrollFallback) {
+            schedule();
+          }
+        }, 4000);
 
         function schedule() {
           if (!state.running) return;
@@ -3079,13 +3082,14 @@
         }
         function resumeAuto() {
           state.running = true;
-          // Falls kein Timer läuft und kein Video abgespielt wird, schedule neu
-          if (!activeTimer) {
-            var allVids = c.el.querySelectorAll('video');
-            var anyPlaying = false;
-            allVids.forEach(function(v) { if (!v.paused) anyPlaying = true; });
-            if (!anyPlaying) { schedule(); }
-          }
+          // Nach Interaktion: nach kurzer Verzögerung automatisch neustarten
+          // (activeTimer könnte noch vom Fallback eines blockierten Videos gesetzt sein)
+          setTimeout(function() {
+            if (!state.running) return;
+            if (!activeTimer && !scrollEndHandler) {
+              schedule();
+            }
+          }, 1500);
         }
         c.el.addEventListener('mousedown', cancelAuto);
         c.el.addEventListener('mouseup', resumeAuto);
