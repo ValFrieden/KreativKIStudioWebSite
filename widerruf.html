@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de" style="color-scheme:dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Widerrufsbelehrung – KreativKI Studio</title>
+  <meta name="description" content="Widerrufsbelehrung und Muster-Widerrufsformular für KreativKI Studio.">
+  <meta name="theme-color" content="#0a0c1a">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *:focus-visible { outline: 2px solid #00e5ff; outline-offset: 4px; border-radius: 4px; }
+    :root {
+      --bg-primary: #0a0c1a; --bg-secondary: #0e1025;
+      --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.04);
+      --glass-hover: rgba(255,255,255,0.06);
+      --cyan: #00e5ff; --magenta: #ff00c8; --purple: #8b5cf6;
+      --text: #e0e0f0; --text-dim: rgba(255,255,255,0.5); --radius: 16px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-primary); color: var(--text);
+      line-height: 1.8; min-height: 100vh; display: flex; flex-direction: column;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 20% 20%, rgba(0,229,255,0.06), transparent),
+                  radial-gradient(ellipse 60% 50% at 80% 80%, rgba(139,92,246,0.05), transparent);
+      pointer-events: none; z-index: 0;
+    }
+    .container { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 40px 24px; flex: 1; }
+    h1 {
+      font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--cyan), var(--magenta));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 8px;
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--cyan); text-decoration: none; font-size: 0.95rem; margin-bottom: 32px; transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.7; }
+    .legal-card {
+      background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px; margin-bottom: 24px;
+    }
+    .legal-card h2 { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--cyan); margin-bottom: 16px; }
+    .legal-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--purple); margin-top: 20px; margin-bottom: 8px; }
+    .legal-card p, .legal-card li { font-size: 0.95rem; color: var(--text); margin-bottom: 8px; }
+    .legal-card ul { padding-left: 20px; margin-bottom: 12px; }
+    .legal-card a { color: var(--cyan); text-decoration: none; }
+    .legal-card a:hover { text-decoration: underline; }
+    .legal-card .highlight { color: var(--cyan); font-weight: 600; }
+    .legal-card .warning { color: var(--magenta); font-weight: 600; }
+    .wr-form-box {
+      background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.08);
+      border-radius: 12px; padding: 24px; margin-top: 16px;
+    }
+    .wr-form-box p { margin-bottom: 6px; }
+    footer { position: relative; z-index: 1; text-align: center; padding: 24px; font-size: 0.85rem; color: var(--text-dim); }
+    footer a { color: var(--cyan); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 600px) { .container { padding: 24px 16px; } h1 { font-size: 1.6rem; } .legal-card { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+    <h1>Widerrufsbelehrung</h1>
+    <p style="color:var(--text-dim);margin-bottom:32px;">Stand: Juni 2026</p>
+
+    <div class="legal-card">
+      <h2>Widerrufsrecht für Verbraucher</h2>
+      <p><strong>Verbraucher</strong> ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken überwiegend außerhalb ihrer gewerblichen oder selbstständigen beruflichen Tätigkeit abschließt.</p>
+
+      <h3>Widerrufsbelehrung</h3>
+      <p>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
+      <p>Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.</p>
+      <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns</p>
+      <p>
+        <strong>KreativKI Studio</strong> (Einzelunternehmen)<br>
+        Valeri Friedland<br>
+        c/o POSTFLEX PFX-062-706<br>
+        Emsdettener Straße 10<br>
+        48268 Greven<br>
+        E-Mail: <a href="mailto:info@kreativkistudio.de">info@kreativkistudio.de</a>
+      </p>
+      <p>mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das nachfolgende Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.</p>
+      <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
+
+      <h3>Folgen des Widerrufs</h3>
+      <p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Für die Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet.</p>
+      <p>Haben Sie verlangt, dass die Dienstleistung während der Widerrufsfrist beginnen soll, so zahlen Sie uns einen angemessenen Betrag, der dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des Widerrufsrechts hinsichtlich dieses Vertrags unterrichten, bereits erbrachten Dienstleistungen im Vergleich zum Gesamtumfang der im Vertrag vorgesehenen Dienstleistungen entspricht.</p>
+
+      <h3 class="warning">Wichtiger Hinweis zum Erlöschen des Widerrufsrechts bei Dienstleistungen</h3>
+      <p>Das Widerrufsrecht erlischt vorzeitig bei einem Vertrag über die Erbringung von Dienstleistungen, wenn der Vertrag von Ihnen ausdrücklich gewünscht wurde und Sie vor Ablauf der Widerrufsfrist zur Kenntnis genommen haben, dass Sie Ihr Widerrufsrecht mit vollständiger Vertragserfüllung durch uns verlieren (§ 356 Abs. 5 BGB).</p>
+      <p>Mit Ihrer ausdrücklichen Zustimmung zum vorzeitigen Beginn der Dienstleistung und Ihrer Bestätigung, dass Sie Ihr Widerrufsrecht mit vollständiger Vertragserfüllung verlieren, kann der Vertrag sofort erfüllt werden – ein späterer Widerruf ist dann nicht mehr möglich.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Muster-Widerrufsformular</h2>
+      <p style="margin-bottom:16px;">Wenn Sie den Vertrag widerrufen möchten, füllen Sie bitte dieses Formular aus und senden Sie es zurück an:</p>
+
+      <div class="wr-form-box">
+        <p><strong>KreativKI Studio</strong></p>
+        <p>
+          Valeri Friedland<br>
+          c/o POSTFLEX PFX-062-706<br>
+          Emsdettener Straße 10<br>
+          48268 Greven
+        </p>
+        <p>E-Mail: <a href="mailto:info@kreativkistudio.de">info@kreativkistudio.de</a></p>
+        <p style="margin-top:16px;">— Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über die Erbringung der folgenden Dienstleistung (*):</p>
+        <p style="margin:8px 0;padding:8px;background:rgba(255,255,255,0.03);border-radius:6px;">_________________________________________________</p>
+        <p>— Bestellt am (*): ___________________ / Erhalten am (*): ___________________</p>
+        <p>— Name des/der Verbraucher(s): ___________________________________________</p>
+        <p>— Anschrift des/der Verbraucher(s): ________________________________________</p>
+        <p>— E-Mail-Adresse des/der Verbraucher(s): ___________________________________</p>
+        <p style="margin-top:12px;">— Datum: ___________________</p>
+        <p style="margin-top:16px;font-size:0.85rem;color:var(--text-dim);">(*) Unzutreffendes streichen.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> <span style="color:#00e5ff;">KreativKI Studio</span> — <a href="impressum.html">Impressum</a> · <a href="widerruf.html">Widerruf</a> · <a href="datenschutz.html">Datenschutz</a></p>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

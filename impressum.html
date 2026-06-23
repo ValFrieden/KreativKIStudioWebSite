@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de" style="color-scheme:dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum – KreativKI Studio</title>
+  <meta name="description" content="Impressum und rechtliche Angaben zu KreativKI Studio.">
+  <meta name="theme-color" content="#0a0c1a">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *:focus-visible { outline: 2px solid #00e5ff; outline-offset: 4px; border-radius: 4px; }
+
+    :root {
+      --bg-primary: #0a0c1a;
+      --bg-secondary: #0e1025;
+      --glass: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.04);
+      --glass-hover: rgba(255,255,255,0.06);
+      --cyan: #00e5ff;
+      --magenta: #ff00c8;
+      --purple: #8b5cf6;
+      --text: #e0e0f0;
+      --text-dim: rgba(255,255,255,0.5);
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 20% 20%, rgba(0,229,255,0.06), transparent),
+                  radial-gradient(ellipse 60% 50% at 80% 80%, rgba(139,92,246,0.05), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      flex: 1;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--cyan), var(--magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cyan);
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    .legal-card {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .legal-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+
+    .legal-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--purple);
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    .legal-card p, .legal-card li {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .legal-card ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .legal-card a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    .legal-card a:hover { text-decoration: underline; }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+    footer a { color: var(--cyan); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .container { padding: 24px 16px; }
+      h1 { font-size: 1.6rem; }
+      .legal-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+    <h1>Impressum</h1>
+    <p style="color:var(--text-dim);margin-bottom:32px;">Angaben gemäß § 5 TMG</p>
+
+    <div class="legal-card">
+      <h2>Betreiber</h2>
+      <p><strong>KreativKI Studio</strong> (Einzelunternehmen)</p>
+      <p>
+        Valeri Friedland<br>
+        c/o POSTFLEX PFX-062-706<br>
+        Emsdettener Straße 10<br>
+        48268 Greven
+      </p>
+      <p>
+        E-Mail: <a href="mailto:info@kreativkistudio.de">info@kreativkistudio.de</a><br>
+        Web: <a href="https://kreativkistudio.de">https://kreativkistudio.de</a>
+      </p>
+    </div>
+
+    <div class=legal-card>
+      <h2>Umsatzsteuer</h2>
+      <p>Angaben gemäß § 19 UStG: Der Betreiber dieser Website wird nach der Kleinunternehmerregelung besteuert. Es wird daher keine Umsatzsteuer auf den Rechnungen ausgewiesen.</p>
+    </div>
+
+    <div class=legal-card>
+      <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+      <p>KreativKI Studio (Einzelunternehmen), siehe Kontaktangaben oben.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Haftungsausschluss</h2>
+
+      <h3>Haftung für Inhalte</h3>
+      <p>Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir jedoch keine Gewähr. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+
+      <h3>Haftung für Links</h3>
+      <p>Diese Website enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
+
+      <h3>Urheberrecht</h3>
+      <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+    </div>
+
+    <div class="legal-card">
+      <h2>Hinweise zur KI-gestützten Erstellung</h2>
+      <p>Die auf dieser Website präsentierten Bilder, Videos und Musiktitel wurden mit Unterstützung von KI-Technologien erstellt. Alle gezeigten Werbe- und Demonstrationsmaterialien dienen ausschließlich Portfolio- und Präsentationszwecken. Marken- und Produktnamen können Marken der jeweiligen Rechteinhaber sein.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> <span style="color:#00e5ff;">KreativKI Studio</span> — <a href="impressum.html">Impressum</a> · <a href="widerruf.html">Widerruf</a> · <a href="datenschutz.html">Datenschutz</a></p>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

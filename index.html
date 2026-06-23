@@ -1372,22 +1372,24 @@
       .showcase-section.sc-full { display: block; }
 
       .showcase-carousel {
-        max-height: 80dvh;
+        max-height: 85dvh;
         overflow-y: clip;
       }
-      .showcase-slide { grid-template-columns: 1fr; gap: 12px; padding: 16px; }
-      .sc-visual { aspect-ratio: 16/9; max-height: 40vh; min-height: 180px; }
-      .sc-visual video { min-height: 180px; }
+      .showcase-slide { grid-template-columns: 1fr; gap: 16px; padding: 16px; justify-items: center; text-align: center; }
+      .sc-visual { aspect-ratio: 4/5; max-height: 55vh; min-height: 250px; width: 100%; max-width: 450px; margin: 0 auto; }
+      .sc-visual video { min-height: 250px; }
+      .sc-nav { justify-content: center; }
 
-      .showcase-section .sc-desc { font-size: 0.6rem; }
+      .showcase-section .sc-desc { font-size: 0.7rem; }
+      .sc-info { align-items: center; text-align: center; }
 
       .portfolio-carousel {
-        max-height: 80dvh;
+        max-height: 85dvh;
         overflow-y: clip;
       }
-      .portfolio-slide { flex-direction: column; min-height: auto; }
-      .portfolio-slide .pf-visual { flex: none; max-width: 100%; max-height: 50vh; aspect-ratio: 16/9; }
-      .portfolio-slide .pf-info { padding: 24px 20px; }
+      .portfolio-slide { flex-direction: column; min-height: auto; align-items: center; text-align: center; padding: 20px 16px; }
+      .portfolio-slide .pf-visual { flex: none; width: 100%; max-width: 450px; max-height: 55vh; aspect-ratio: 4/5; margin: 0 auto; }
+      .portfolio-slide .pf-info { padding: 16px 10px; align-items: center; text-align: center; }
 
       .services-grid { grid-template-columns: 1fr; gap: 16px; }
       .pricing-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -2709,6 +2711,11 @@
       <a href="#about" data-i18n="nav-about">Über uns</a>
       <a href="#kontakt" data-i18n="nav-contact">Kontakt</a>
     </div>
+    <div class="footer-links" style="margin-top: 20px; margin-bottom: 20px; font-size: 0.85em; opacity: 0.8;">
+      <a href="impressum.html" data-i18n="nav-impressum">Impressum</a>
+      <a href="datenschutz.html" data-i18n="nav-datenschutz">Datenschutz</a>
+      <a href="widerruf.html" data-i18n="nav-widerruf">Widerruf</a>
+    </div>
     <p>© <span id="year"></span> <span style="color:var(--cyan);">KreativKI Studio</span> — <span data-i18n="footer-tagline">KI-gestützte Kreativlösungen</span></p>
   </footer>
 
@@ -2947,12 +2954,24 @@
       var el = document.getElementById(id);
       var maxScroll = el.scrollWidth - el.clientWidth;
       el.scrollLeft >= maxScroll - 5 ? el.scrollTo({ left: 0, behavior: 'smooth' }) : el.scrollBy({ left: el.clientWidth, behavior: 'smooth' });
-      if (_carousels[id]) { _carousels[id].running = false; clearTimeout(_carousels[id].resumeTimer); _carousels[id].resumeTimer = setTimeout(function() { _carousels[id].running = true; }, 10000); }
+      if (_carousels[id]) {
+        if (_carousels[id].cancel) _carousels[id].cancel(); else _carousels[id].running = false;
+        clearTimeout(_carousels[id].resumeTimer);
+        _carousels[id].resumeTimer = setTimeout(function() { 
+          if (_carousels[id].resume) _carousels[id].resume(); else _carousels[id].running = true; 
+        }, 10000);
+      }
     }
     function carouselPrev(id) {
       var el = document.getElementById(id);
       el.scrollLeft <= 5 ? el.scrollTo({ left: el.scrollWidth, behavior: 'smooth' }) : el.scrollBy({ left: -el.clientWidth, behavior: 'smooth' });
-      if (_carousels[id]) { _carousels[id].running = false; clearTimeout(_carousels[id].resumeTimer); _carousels[id].resumeTimer = setTimeout(function() { _carousels[id].running = true; }, 10000); }
+      if (_carousels[id]) {
+        if (_carousels[id].cancel) _carousels[id].cancel(); else _carousels[id].running = false;
+        clearTimeout(_carousels[id].resumeTimer);
+        _carousels[id].resumeTimer = setTimeout(function() { 
+          if (_carousels[id].resume) _carousels[id].resume(); else _carousels[id].running = true; 
+        }, 10000);
+      }
     }
 
     // AUTO-ROTATING CAROUSELS
@@ -2968,6 +2987,24 @@
         _carousels[c.id] = state;
         var activeTimer = null;
 
+        // IntersectionObserver für Videos: Startet das Video neu, sobald der Slide sichtbar wird
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var v = entry.target.querySelector('video');
+              if (v) {
+                v.currentTime = 0;
+                var p = v.play();
+                if (p !== undefined) p.catch(function(){});
+              }
+            }
+          });
+        }, { root: c.el, threshold: 0.6 });
+        
+        c.el.querySelectorAll('.showcase-slide, .portfolio-slide').forEach(function(slide) {
+          io.observe(slide);
+        });
+
         // scrollend-Listener (einmalig pro advance), wird vor jedem Scroll neu gesetzt
         var scrollEndHandler = null;
         var scrollFallback = null;
@@ -2978,6 +3015,7 @@
             scrollEndHandler = null;
           }
           if (scrollFallback) { clearTimeout(scrollFallback); scrollFallback = null; }
+          state._wrapping = false;
           if (!state.running) return;
           schedule();
         }
@@ -2986,34 +3024,56 @@
           if (!state.running) return;
           // aktiven Timer zurücksetzen, bevor gescrollt wird
           if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
-          // scrollend-Listener vorbereiten (einmalig)
-          scrollEndHandler = onScrollEnd;
-          c.el.addEventListener('scrollend', scrollEndHandler, { once: true });
-          // Fallback: falls scrollend aus irgendeinem Grund nicht feuert (z.B. alter Browser)
-          scrollFallback = setTimeout(function() {
-            if (scrollEndHandler) {
-              c.el.removeEventListener('scrollend', scrollEndHandler);
-              scrollEndHandler = null;
-              if (state.running) schedule();
-            }
-          }, 2000);
-          // scrollen
           var maxScroll = c.el.scrollWidth - c.el.clientWidth;
-          c.el.scrollLeft >= maxScroll - 5 ? c.el.scrollTo({ left: 0, behavior: 'smooth' }) : c.el.scrollBy({ left: c.el.clientWidth, behavior: 'smooth' });
+          var isLastSlide = c.el.scrollLeft >= maxScroll - (c.el.clientWidth / 2);
+
+          if (isLastSlide) {
+            // Wrap zum ersten Slide – smooth-scroll, damit scrollend feuert
+            state._wrapping = true;
+            scrollEndHandler = onScrollEnd;
+            c.el.addEventListener('scrollend', scrollEndHandler, { once: true });
+            scrollFallback = setTimeout(function() {
+              if (scrollEndHandler) {
+                c.el.removeEventListener('scrollend', scrollEndHandler);
+                scrollEndHandler = null;
+                state._wrapping = false;
+                if (state.running) schedule();
+              }
+            }, 2000);
+            c.el.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            // Normal zum nächsten Slide scrollen
+            // scrollend-Listener vorbereiten (einmalig)
+            scrollEndHandler = onScrollEnd;
+            c.el.addEventListener('scrollend', scrollEndHandler, { once: true });
+            // Fallback: falls scrollend nicht feuert (z.B. alter Browser)
+            scrollFallback = setTimeout(function() {
+              if (scrollEndHandler) {
+                c.el.removeEventListener('scrollend', scrollEndHandler);
+                scrollEndHandler = null;
+                if (state.running) schedule();
+              }
+            }, 2000);
+            c.el.scrollBy({ left: c.el.clientWidth, behavior: 'smooth' });
+          }
         }
 
         function waitAndAdvance(slide, fallbackInterval) {
           var video = slide && slide.querySelector('video');
-          // Festes Intervall: nach Ablauf wird auf jeden Fall weitergeschaltet
+          // Falls noch ein Timer aktiv ist (Sicherheit), diesen löschen
+          if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
+          // Festes Intervall als Fallback setzen
           activeTimer = setTimeout(advance, fallbackInterval);
 
           if (video) {
-            // Optional: Video-Ende kann das Weiterschalten beschleunigen
-            // (falls Autoplay erlaubt ist und das Video kürzer als das Intervall ist)
+            // Um das 'ended' Event zu erhalten, muss loop deaktiviert werden
             var hadLoop = video.loop;
-            video.loop = true; // loop an lassen — das ist sicherer
+            video.loop = false;
             video._loopState = hadLoop;
+            state._waitingForVideo = true;
+            
             var endedHandler = function() {
+              state._waitingForVideo = false;
               if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
               video.loop = hadLoop;
               video.removeEventListener('ended', endedHandler);
@@ -3021,6 +3081,7 @@
               advance();
             };
             var errorHandler = function() {
+              state._waitingForVideo = false;
               if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
               video.loop = hadLoop;
               video.removeEventListener('ended', endedHandler);
@@ -3030,20 +3091,30 @@
             if (!video._endedHandlers) video._endedHandlers = [];
             video._endedHandlers.push(endedHandler);
             video._endedHandlers.push(errorHandler);
-            video.currentTime = 0;
+            
             var playPromise = video.play();
-            if (playPromise) {
-              playPromise.catch(function() { /* Autoplablockiert – setzt auf festes Intervall */ });
+            if (playPromise !== undefined) {
+              playPromise.then(function() {
+                // Video spielt erfolgreich ab: Fallback-Timer löschen, damit bis zum Ende gewartet wird
+                if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
+              }).catch(function() { 
+                state._waitingForVideo = false;
+              });
+            } else {
+              if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
             }
             video.addEventListener('ended', endedHandler);
             video.addEventListener('error', errorHandler);
           }
         }
 
+
         // watchAuto: periodischer Watchdog (alle 4s) – startet tote Carousels neu
         // Wichtig: nur wenn state.running && kein Timer/scrollend pending ist
         var watchTimer = setInterval(function() {
           if (!state.running) return;
+          // Nicht eingreifen während eines Wrap-Scrolls oder wenn wir auf ein Video warten
+          if (state._wrapping || state._waitingForVideo) return;
           if (!activeTimer && !scrollEndHandler && !scrollFallback) {
             schedule();
           }
@@ -3053,6 +3124,9 @@
           if (!state.running) return;
           var slides = c.el.querySelectorAll('.showcase-slide, .portfolio-slide');
           var idx = Math.round(c.el.scrollLeft / c.el.clientWidth);
+          // Absicherung: idx auf gültigen Bereich begrenzen
+          if (idx < 0) idx = 0;
+          if (idx >= slides.length) idx = slides.length - 1;
           var currentSlide = slides[idx] || slides[slides.length - 1];
           waitAndAdvance(currentSlide, c.interval);
         }
@@ -3061,6 +3135,8 @@
         // Benutzer-Interaktion: Timer/Video abbrechen
         function cancelAuto() {
           state.running = false;
+          state._wrapping = false;
+          state._waitingForVideo = false;
           if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
           // scrollend-Listener aufräumen falls pending
           if (scrollEndHandler) {
@@ -3082,15 +3158,21 @@
         }
         function resumeAuto() {
           state.running = true;
+          state._wrapping = false;
+          // Vorherigen Timeout löschen, falls mehrfach ausgelöst
+          if (state._resumeTimeout) { clearTimeout(state._resumeTimeout); state._resumeTimeout = null; }
           // Nach Interaktion: nach kurzer Verzögerung automatisch neustarten
-          // (activeTimer könnte noch vom Fallback eines blockierten Videos gesetzt sein)
-          setTimeout(function() {
+          state._resumeTimeout = setTimeout(function() {
             if (!state.running) return;
             if (!activeTimer && !scrollEndHandler) {
               schedule();
             }
           }, 1500);
         }
+        
+        state.cancel = cancelAuto;
+        state.resume = resumeAuto;
+
         c.el.addEventListener('mousedown', cancelAuto);
         c.el.addEventListener('mouseup', resumeAuto);
         c.el.addEventListener('mouseleave', resumeAuto);
@@ -3343,6 +3425,9 @@
         'nav-sound': { de: 'Sound', ru: 'Музыка', en: 'Sound' },
         'nav-about': { de: 'Über&nbsp;uns', ru: 'О нас', en: 'About&nbsp;us' },
         'nav-contact': { de: 'Kontakt', ru: 'Контакты', en: 'Contact' },
+        'nav-impressum': { de: 'Impressum', ru: 'Импрессум', en: 'Imprint' },
+        'nav-datenschutz': { de: 'Datenschutz', ru: 'Конфиденциальность', en: 'Privacy Policy' },
+        'nav-widerruf': { de: 'Widerruf', ru: 'Отзыв', en: 'Revocation' },
         'hero-badge': { de: 'KI-gestützte Kreativlösungen', ru: 'Креативные решения с ИИ', en: 'AI-Powered Creative Solutions' },
         'hero-h1-after': { de: 'Lösungen', ru: 'Решения', en: 'Solutions' },
         'hero-subline': { de: '— KreativKI Studio —', ru: '— KreativKI Studio —', en: '— KreativKI Studio —' },
