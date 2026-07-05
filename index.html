@@ -1372,8 +1372,7 @@
       .showcase-section.sc-full { display: block; }
 
       .showcase-carousel {
-        max-height: 85dvh;
-        overflow-y: clip;
+        /* max-height removed to prevent content from being cut off */
       }
       .showcase-slide { grid-template-columns: 1fr; gap: 16px; padding: 16px; justify-items: center; text-align: center; }
       .sc-visual { aspect-ratio: 4/5; max-height: 55vh; min-height: 250px; width: 100%; max-width: 450px; margin: 0 auto; }
@@ -1384,8 +1383,7 @@
       .sc-info { align-items: center; text-align: center; }
 
       .portfolio-carousel {
-        max-height: 85dvh;
-        overflow-y: clip;
+        /* max-height removed to prevent content from being cut off */
       }
       .portfolio-slide { flex-direction: column; min-height: auto; align-items: center; text-align: center; padding: 20px 16px; }
       .portfolio-slide .pf-visual { flex: none; width: 100%; max-width: 450px; max-height: 55vh; aspect-ratio: 4/5; margin: 0 auto; }
