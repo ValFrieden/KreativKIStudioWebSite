@@ -12,3 +12,12 @@ compress_media.py
 .env
 .env.local
 .env.*.local
+
+# Agent workflow (local only)
+.agents/
+.claude/
+.vscode/
+skills/
+skills-lock.json
+AGENTS.md
+CLAUDE.md
