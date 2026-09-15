@@ -7,3 +7,8 @@ __pycache__/
 
 # Temp / build
 compress_media.py
+
+# Local credentials
+.env
+.env.local
+.env.*.local
