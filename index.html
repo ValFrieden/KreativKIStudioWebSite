@@ -2,7 +2,7 @@
 <html lang="de" style="color-scheme:dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title data-i18n="meta-title">KreativKI Studio – KI-gestützte Kreativlösungen</title>
   <meta name="description" data-i18n="meta-desc" content="KreativKI Studio verwandelt Ihre Ideen in atemberaubende visuelle und auditive Erlebnisse – mit modernster KI-Technologie.">
   <meta name="theme-color" content="#0a0c1a">
@@ -1464,6 +1464,8 @@
 
     }
   </style>
+  <link rel="stylesheet" href="studio.css">
+  <script src="studio.js" defer></script>
 </head>
 <body>
 
@@ -1501,11 +1503,10 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
+      <li><a href="#projects" data-studio-text="projects">Arbeiten</a></li>
       <li><a href="#services" data-i18n="nav-services">Leistungen</a></li>
       <li><a href="#pricing" data-i18n="nav-pricing">Angebote</a></li>
-      <li><a href="#showcase" data-i18n="nav-showcase">Showcase</a></li>
-      <li><a href="#davor-danach" data-i18n="nav-editing">Bildbearbeitung</a></li>
-      <li><a href="#portfolio" data-i18n="nav-portfolio">Portfolio</a></li>
+
       <li><a href="#music" data-i18n="nav-sound">Sound</a></li>
       <li><a href="#about" data-i18n="nav-about">Über&nbsp;uns</a></li>
       <li><a href="#kontakt" data-i18n="nav-contact">Kontakt</a></li>
@@ -1516,16 +1517,37 @@
   <section class="hero" id="hero">
     <div class="hero-content">
       <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero-badge">KI-gestützte Kreativlösungen</span></div>
-      <h1><span class="gradient-text">KI-Kreativ</span><br data-i18n-hidden="hero-h1-br"><span data-i18n="hero-h1-after">Lösungen</span></h1>
-      <div class="hero-sub-line" data-i18n="hero-subline">— KreativKI Studio —</div>
-      <p data-i18n="hero-desc">KreativKI Studio verwandelt Ihre Ideen in atemberaubende visuelle und auditive Erlebnisse – mit modernster Technologie, die Grenzen verschiebt.</p>
+      <h1 data-studio-text="headline">Aus deinem Foto<br>wird <em>mehr.</em></h1>
+      <p data-studio-text="intro">Produktbilder, bewegte Erinnerungen und eigener Sound. Entdecke, was aus deinem Ausgangsmaterial entstehen kann.</p>
       <div class="hero-cta">
-        <a href="#services" class="btn btn-primary" data-i18n="hero-btn-discover">▸ Entdecken</a>
-        <a href="#kontakt" class="btn btn-glass" data-i18n="hero-btn-contact">Kontakt</a>
+        <a href="#projects" class="btn btn-primary" data-studio-text="discover">Verwandlungen entdecken</a>
+        <a href="#kontakt" class="btn btn-glass" data-studio-text="inquire">Idee besprechen</a>
       </div>
     </div>
+    <a class="hero-proof" href="#projects">
+      <div><img src="media/Burger-Vorher.png" alt="Original: Burgerfoto" width="640" height="480" fetchpriority="high"><span data-studio-text="original">Original</span></div>
+      <div><img src="media/Explosions-Burger.png" alt="KI-bearbeitetes Ergebnis: Burger-Werbemotiv" width="640" height="480"><span data-studio-text="result">Ergebnis</span><span class="ai-disclosure hero-ai" data-studio-text="aiEdited">KI-bearbeitet</span></div>
+      <p data-studio-text="proof">Ein Motiv. Eine neue Wirkung. →</p>
+    </a>
   </section>
 
+  <section id="projects" class="project-section">
+    <div class="project-heading"><div><span class="section-label" data-studio-text="studio">Aus unserem Studio</span>
+    <h2 class="section-title" data-studio-text="galleryTitle">Das Original. Die Möglichkeiten.</h2></div>
+    <p data-studio-text="galleryIntro">Wähle ein Projekt und entdecke das Ergebnis in Ruhe.</p></div>
+    <div id="projectFilters" class="project-filters" role="group" aria-label="Projektfilter"></div>
+    <div class="project-stage" id="projectStage"></div>
+    <p id="projectCount" class="project-count" role="status"></p>
+    <div id="projectGrid" class="project-grid"></div>
+  </section>
+  <section class="studio-process" id="ablauf">
+    <span class="section-label" data-studio-text="processLabel">So entsteht dein Projekt</span>
+    <div class="process-grid">
+      <article><span>01</span><h2 data-studio-text="step1">Idee teilen</h2><p data-studio-text="step1body">Zeig uns dein Material und beschreibe, wofür du das Ergebnis brauchst.</p></article>
+      <article><span>02</span><h2 data-studio-text="step2">Richtung festlegen</h2><p data-studio-text="step2body">Wir klären Stil, Umfang, Ausgabeformat und Angebot gemeinsam.</p></article>
+      <article><span>03</span><h2 data-studio-text="step3">Ergebnis erhalten</h2><p data-studio-text="step3body">Du erhältst die vereinbarten Dateien für deinen Einsatz.</p></article>
+    </div>
+  </section>
   <!-- SERVICES / LEISTUNGEN -->
   <section id="services">
     <div class="reveal">
@@ -1539,14 +1561,14 @@
         <div class="service-number">01</div>
         <span class="service-icon">🎨</span>
         <h3 data-i18n="svc-img-title">Bildgenerierung & -bearbeitung</h3>
-        <p data-i18n="svc-img-desc">Hochwertige KI-Bilder, Retusche, Hintergrundwechsel, Kolorierung und mehr – auf Knopfdruck.</p>
+        <p data-i18n="svc-img-desc">Porträts retuschieren, Hintergründe ändern und Motive gestalten – passend für Profil, Druck oder Social Media.</p>
         <div class="service-tags"><span data-i18n="svc-img-tag">KI Vision</span></div>
       </div>
       <div class="service-card reveal-scale" data-i18n-group="svc-video">
         <div class="service-number">02</div>
         <span class="service-icon">🎬</span>
         <h3 data-i18n="svc-video-title">Video & Animation</h3>
-        <p data-i18n="svc-video-desc">Fotos in Bewegung, Cinemagraphs, KI-Videos und animierte Logos für maximalen Eindruck.</p>
+        <p data-i18n="svc-video-desc">Fotos animieren, kurze Clips gestalten und Logos bewegen – für Erinnerungen, Reels oder deinen Markenauftritt.</p>
         <div class="service-tags"><span data-i18n="svc-video-tag">KI Video</span></div>
       </div>
       <div class="service-card reveal-right" data-i18n-group="svc-audio">
@@ -1567,14 +1589,14 @@
         <div class="service-number">05</div>
         <span class="service-icon">🖼️</span>
         <h3 data-i18n="svc-prod-title">Produktfotografie & CGI</h3>
-        <p data-i18n="svc-prod-desc">Atemberaubende Produktbilder und fotorealistische CGI-Szenen für Kampagnen und Kataloge.</p>
+        <p data-i18n="svc-prod-desc">Aus deinen Produktfotos entstehen neue Szenen für Shop, Kampagne und Katalog – abgestimmt auf Motiv und Format.</p>
         <div class="service-tags"><span data-i18n="svc-prod-tag">KI Studio</span></div>
       </div>
       <div class="service-card reveal-right" data-i18n-group="svc-custom">
         <div class="service-number">06</div>
         <span class="service-icon">🧠</span>
         <h3 data-i18n="svc-custom-title">Individuelle KI-Lösungen</h3>
-        <p data-i18n="svc-custom-desc">Maßgeschneiderte KI-Workflows und Modelle – genau auf Ihre Anforderungen zugeschnitten.</p>
+        <p data-i18n="svc-custom-desc">Du hast eine besondere Idee? Wir besprechen Ausgangsmaterial, gewünschtes Ergebnis und einen passenden Ablauf.</p>
         <div class="service-tags"><span data-i18n="svc-custom-tag">KI Custom</span></div>
       </div>
       <div class="service-card reveal-right" data-i18n-group="svc-web">
@@ -1588,7 +1610,7 @@
   </section>
 
   <!-- SHOWCASE / AUS NIX GEMACHT -->
-  <section class="showcase-section sc-full" id="showcase">
+  <template data-project-source class="showcase-section sc-full" id="showcase">
     <div class="section-inner">
       <div class="reveal">
         <span class="section-label" data-i18n="showcase-label">Showcase</span>
@@ -1726,10 +1748,10 @@
         <p style="color:var(--text-muted);font-size:0.7rem;font-weight:300;" data-i18n="showcase-footnote">▸ Klick auf ein Bild für Vollbild-Zoom. Links: das Rohmaterial. Rechts: das Produkt, das verkauft.</p>
       </div>
     </div>
-  </section>
+  </template>
 
   <!-- BILDBEARBEITUNG SHOWCASE / DAVOR·DANACH -->
-  <section class="showcase-section sc-full" id="davor-danach">
+  <template data-project-source class="showcase-section sc-full" id="davor-danach">
     <div class="section-inner">
       <div class="reveal">
         <span class="section-label" data-i18n="edit-label">Bildbearbeitung</span>
@@ -1752,7 +1774,7 @@
           <div class="sc-card">
             <span class="sc-label after" data-i18n="label-after">Danach</span>
             <div class="sc-visual after">
-              <video autoplay loop muted playsinline poster="media/Animation von alten Fotos danach.mp4" onclick="openLightbox(this)">
+              <video controls playsinline preload="none" poster="media/Animation von alten Fotos danach-poster.jpg" onclick="openLightbox(this)">
                 <source src="media/Animation von alten Fotos danach.mp4" type="video/mp4">
               </video>
               <span class="sc-badge" data-i18n="sh-badge1-after">🎞️ Lebendig</span>
@@ -1814,7 +1836,7 @@
           <div class="sc-card">
             <span class="sc-label after" data-i18n="label-after">Danach</span>
             <div class="sc-visual after">
-              <video autoplay loop muted playsinline poster="media/Animation von verstorbenen danach.mp4" onclick="openLightbox(this)">
+              <video controls playsinline preload="none" poster="media/Animation von verstorbenen danach-poster.jpg" onclick="openLightbox(this)">
                 <source src="media/Animation von verstorbenen danach.mp4" type="video/mp4">
               </video>
               <span class="sc-badge" data-i18n="sh-badge4-after">💫 Unvergesslich</span>
@@ -1956,7 +1978,7 @@
           <div class="sc-card">
             <span class="sc-label after" data-i18n="label-after">Danach</span>
             <div class="sc-visual after">
-              <video autoplay loop muted playsinline poster="media/Foto animieren danach.mp4" onclick="openLightbox(this)">
+              <video controls playsinline preload="none" poster="media/Foto animieren danach-poster.jpg" onclick="openLightbox(this)">
                 <source src="media/Foto animieren danach.mp4" type="video/mp4">
               </video>
               <span class="sc-badge" data-i18n="sh-badge11-after">🎬 Cinema-Effekt</span>
@@ -1978,7 +2000,7 @@
           <div class="sc-card">
             <span class="sc-label after" data-i18n="label-after">Danach</span>
             <div class="sc-visual after">
-              <video autoplay loop muted playsinline poster="media/Foto in Video  Cinemagraph danach.mp4" onclick="openLightbox(this)">
+              <video controls playsinline preload="none" poster="media/Foto in Video  Cinemagraph danach-poster.jpg" onclick="openLightbox(this)">
                 <source src="media/Foto in Video  Cinemagraph danach.mp4" type="video/mp4">
               </video>
               <span class="sc-badge" data-i18n="sh-badge12-after">🌊 Verträumt</span>
@@ -1997,10 +2019,10 @@
         <p style="color:var(--text-muted);font-size:0.7rem;font-weight:300;" data-i18n="edit-footnote">▸ Klick auf ein Bild oder Video für Vollbild-Zoom. Links: das Original – Rechts: in Minuten mit KI bearbeitet.</p>
       </div>
     </div>
-  </section>
+  </template>
 
   <!-- PORTFOLIO CAROUSEL -->
-  <section id="portfolio">
+  <template data-project-source id="portfolio">
     <div class="reveal">
       <span class="section-label" data-i18n="portfolio-label">Portfolio</span>
       <h2 class="section-title" data-i18n="portfolio-title">Unsere <span class="gradient">Arbeiten</span></h2>
@@ -2056,7 +2078,7 @@
 
       <div class="portfolio-slide">
         <div class="pf-visual">
-          <video autoplay loop muted playsinline poster="media/Hollywood-VFX.mp4" onclick="openLightbox(this)">
+          <video controls playsinline preload="none" poster="media/Hollywood-VFX-poster.jpg" onclick="openLightbox(this)">
             <source src="media/Hollywood-VFX.mp4" type="video/mp4">
           </video>
         </div>
@@ -2069,7 +2091,7 @@
 
       <div class="portfolio-slide">
         <div class="pf-visual">
-          <video autoplay loop muted playsinline poster="media/National-Geographic-Natur.mp4" onclick="openLightbox(this)">
+          <video controls playsinline preload="none" poster="media/National-Geographic-Natur-poster.jpg" onclick="openLightbox(this)">
             <source src="media/National-Geographic-Natur.mp4" type="video/mp4">
           </video>
         </div>
@@ -2091,7 +2113,7 @@
 
       <div class="portfolio-slide">
         <div class="pf-visual">
-          <video autoplay loop muted playsinline poster="media/Logo-Animation.mp4" onclick="openLightbox(this)">
+          <video controls playsinline preload="none" poster="media/Logo-Animation-poster.jpg" onclick="openLightbox(this)">
             <source src="media/Logo-Animation.mp4" type="video/mp4">
           </video>
         </div>
@@ -2104,7 +2126,7 @@
 
       <div class="portfolio-slide">
         <div class="pf-visual">
-          <video autoplay loop muted playsinline poster="media/Neural Bloom.mp4" onclick="openLightbox(this)">
+          <video controls playsinline preload="none" poster="media/Neural Bloom-poster.jpg" onclick="openLightbox(this)">
             <source src="media/Neural Bloom.mp4" type="video/mp4">
           </video>
         </div>
@@ -2117,7 +2139,7 @@
 
       <div class="portfolio-slide">
         <div class="pf-visual">
-          <video autoplay loop muted playsinline poster="media/Frequency Study.mp4" onclick="openLightbox(this)">
+          <video controls playsinline preload="none" poster="media/Frequency Study-poster.jpg" onclick="openLightbox(this)">
             <source src="media/Frequency Study.mp4" type="video/mp4">
           </video>
         </div>
@@ -2134,7 +2156,7 @@
       <button onclick="carouselPrev('portfolioCarousel')" data-i18n="car-prev">‹ Zurück</button>
       <button onclick="carouselNext('portfolioCarousel')" data-i18n="car-next">Weiter ›</button>
     </div>
-  </section>
+  </template>
 
   <!-- MUSIC SECTION – Full Genre Player -->
   <section class="showcase-section" id="music" style="padding:80px 0!important;">
@@ -2669,18 +2691,15 @@
 
 
   <!-- ÜBER UNS -->
+  </section>
   <section id="about" style="text-align:center;">
     <div class="reveal">
       <span class="section-label" data-i18n="about-label">Über uns</span>
       <h2 class="section-title" data-i18n="about-title">Warum <span class="gradient">KreativKI</span>?</h2>
-      <p style="font-size:1rem;color:var(--text-muted);max-width:600px;margin:0 auto 40px;font-weight:300;line-height:1.9;" data-i18n="about-desc">
-        Wir sind ein Team aus Kreativen und Technikern, das die Möglichkeiten generativer KI bis zur Neige ausreizt. Jedes Projekt ist eine Fusion aus menschlicher Vision und maschineller Präzision – schnell, skalierbar und atemberaubend.
+      <p style="font-size:1rem;color:var(--text-muted);max-width:600px;margin:0 auto 40px;line-height:1.9;" data-studio-text="about">
+        KreativKI Studio verbindet deine Idee mit KI-gestützter Bildbearbeitung, Animation und Musik. Wir stimmen Motiv, Stil und Ausgabeformat auf deinen Verwendungszweck ab.
       </p>
-      <div style="display:flex;gap:48px;justify-content:center;flex-wrap:wrap;">
-        <div><div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--magenta));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Viele</div><p style="font-size:0.7rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;" data-i18n="about-stat1">Projekte realisiert</p></div>
-        <div><div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--magenta));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">100%</div><p style="font-size:0.7rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;" data-i18n="about-stat2">Kundenzufriedenheit</p></div>
-        <div><div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--magenta));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">24h</div><p style="font-size:0.7rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;" data-i18n="about-stat3">Express-Lieferung</p></div>
-      </div>
+
     </div>
   </section>
 
@@ -2689,22 +2708,27 @@
     <div class="reveal">
       <span class="section-label" data-i18n="contact-label">Kontakt</span>
       <h2 class="section-title" data-i18n="contact-title">Bereit für das <span class="gradient">nächste Level</span>?</h2>
-      <p data-i18n="contact-desc">Lassen Sie uns gemeinsam etwas Außergewöhnliches schaffen. Schreiben Sie uns – wir melden uns innerhalb von 24 Stunden.</p>
+      <p data-studio-text="contact">Was möchtest du gestalten? Nenne uns dein Wunschmotiv, den Verwendungszweck und deinen Termin. Wir klären Umfang und Angebot gemeinsam.</p>
       <div class="contact-buttons">
         <a href="mailto:info@kreativkistudio.de" class="btn btn-primary">✉️ info@kreativkistudio.de</a>
-        <a href="https://www.kreativkistudio.de" target="_blank" rel="noopener" class="btn btn-glass">🌐 www.kreativkistudio.de</a>
+        <a href="#projects" class="btn btn-glass" data-studio-text="choose">Passendes Beispiel auswählen</a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
+    <aside class="ai-transparency" id="ki-transparenz" aria-labelledby="ai-transparency-title">
+      <h2 id="ai-transparency-title" data-studio-text="transparencyTitle">Transparenz zu KI-Inhalten</h2>
+      <p data-studio-text="transparencyBody">Alle Bilder und Videos auf dieser Website sind KI-generiert – auch die als „Original“ bezeichneten Vorher-Ansichten zeigen keine echten Fotografien, sondern KI-erzeugtes Ausgangsmaterial. Als „KI-bearbeitet“ oder „KI-generiert“ gekennzeichnete Medien wurden mit künstlicher Intelligenz erstellt oder wesentlich verändert.</p>
+      <a href="https://digital-strategy.ec.europa.eu/en/factpages/quick-facts-transparency-rules-ai-systems" target="_blank" rel="noopener" data-studio-text="transparencyLink">Informationen der EU-Kommission</a>
+    </aside>
     <div class="footer-links">
       <a href="#services" data-i18n="nav-services">Leistungen</a>
       <a href="#pricing" data-i18n="nav-pricing">Angebote</a>
-      <a href="#showcase" data-i18n="nav-showcase">Showcase</a>
-      <a href="#davor-danach" data-i18n="nav-editing">Bildbearbeitung</a>
-      <a href="#portfolio" data-i18n="nav-portfolio">Portfolio</a>
+      <a href="#projects" data-i18n="nav-showcase">Showcase</a>
+      <a href="#projects" data-i18n="nav-editing">Bildbearbeitung</a>
+      <a href="#projects" data-i18n="nav-portfolio">Portfolio</a>
       <a href="#music" data-i18n="nav-sound">Sound</a>
       <a href="#about" data-i18n="nav-about">Über uns</a>
       <a href="#kontakt" data-i18n="nav-contact">Kontakt</a>
@@ -2718,147 +2742,14 @@
   </footer>
 
   <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Medienansicht" hidden>
+    <button class="lightbox-close" aria-label="Schließen">✕</button>
     <div id="lightbox-content"></div>
   </div>
 
   <!-- WHATSAPP FLOAT -->
-  <a href="https://wa.me/491234567890" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp" data-i18n="whatsapp-label">💬</a>
+  <a href="mailto:info@kreativkistudio.de" class="whatsapp-float" aria-label="E-Mail schreiben">✉</a>
 
-  <!-- THREE.JS -->
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
-      }
-    }
-  </script>
-
-  <script type="module">
-    import * as THREE from 'three';
-
-    const container = document.getElementById('three-canvas');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 12;
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.0;
-    container.appendChild(renderer.domElement);
-
-    // Torus Knot
-    const knotGeo = new THREE.TorusKnotGeometry(2.2, 0.7, 180, 24);
-    const knotMat = new THREE.MeshPhysicalMaterial({
-      color: 0x00e5ff, emissive: 0x00aaff, emissiveIntensity: 0.05,
-      metalness: 0.3, roughness: 0.2, transparent: true, opacity: 0.6,
-      clearcoat: 0.4, clearcoatRoughness: 0.3,
-    });
-    const knot = new THREE.Mesh(knotGeo, knotMat);
-    scene.add(knot);
-
-    // Wireframe shell
-    const wireMat = new THREE.MeshPhysicalMaterial({
-      color: 0x00e5ff, wireframe: true, transparent: true, opacity: 0.08,
-      emissive: 0x00e5ff, emissiveIntensity: 0.02,
-    });
-    const wireShell = new THREE.Mesh(new THREE.TorusKnotGeometry(2.5, 0.9, 120, 16), wireMat);
-    scene.add(wireShell);
-
-    // Glow rings
-    const ringMat = new THREE.MeshBasicMaterial({ color: 0x00e5ff, transparent: true, opacity: 0.12 });
-    const ring = new THREE.Mesh(new THREE.TorusGeometry(3.8, 0.02, 48, 120), ringMat);
-    ring.rotation.x = Math.PI / 3; ring.rotation.z = Math.PI / 4;
-    scene.add(ring);
-
-    const ring2 = new THREE.Mesh(new THREE.TorusGeometry(4.6, 0.01, 32, 120), ringMat.clone());
-    ring2.material.opacity = 0.06;
-    ring2.rotation.x = -Math.PI / 4; ring2.rotation.z = Math.PI / 3;
-    scene.add(ring2);
-
-    // Orbiting spheres
-    const orbGroup = new THREE.Group();
-    for (let i = 0; i < 24; i++) {
-      const color = i % 3 === 0 ? 0x00e5ff : i % 3 === 1 ? 0xff00e5 : 0xb300ff;
-      const orb = new THREE.Mesh(
-        new THREE.SphereGeometry(0.04 + Math.random() * 0.06, 8, 8),
-        new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.3 + Math.random() * 0.3 })
-      );
-      const angle = (i / 24) * Math.PI * 2;
-      const radius = 3.0 + Math.random() * 1.5;
-      orb.position.set(Math.cos(angle) * radius, Math.sin(angle * 2) * 0.8, Math.sin(angle) * radius);
-      orb.userData = { angle, radius, speed: 0.2 + Math.random() * 0.3, phase: Math.random() * Math.PI * 2 };
-      orbGroup.add(orb);
-    }
-    scene.add(orbGroup);
-
-    // Starfield
-    const starCount = 800;
-    const starGeo = new THREE.BufferGeometry();
-    const starPos = new Float32Array(starCount * 3);
-    const starColors = new Float32Array(starCount * 3);
-    const palette = [[0,0.9,1],[1,0,0.9],[0.7,0,1],[1,1,1]];
-    for (let i = 0; i < starCount; i++) {
-      const r = 15 + Math.random() * 50, theta = Math.random() * Math.PI * 2, phi = Math.acos(2 * Math.random() - 1);
-      starPos[i*3] = r * Math.sin(phi) * Math.cos(theta);
-      starPos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
-      starPos[i*3+2] = r * Math.cos(phi);
-      const c = palette[Math.floor(Math.random() * palette.length)];
-      starColors[i*3] = c[0]; starColors[i*3+1] = c[1]; starColors[i*3+2] = c[2];
-    }
-    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-    starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
-    const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ size: 0.08, vertexColors: true, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending, sizeAttenuation: true }));
-    scene.add(stars);
-
-    // Mouse
-    let mouseX = 0, mouseY = 0;
-    document.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-    });
-
-    // Pause Three.js when tab is hidden (save battery on mobile)
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) { renderer.setAnimationLoop(null); }
-      else { renderer.setAnimationLoop(animate); }
-    });
-
-    function animate() {
-      requestAnimationFrame(animate);
-      knot.rotation.x += 0.001; knot.rotation.y += 0.002;
-      wireShell.rotation.x = knot.rotation.x; wireShell.rotation.y = knot.rotation.y;
-      ring.rotation.y += 0.003; ring.rotation.x += 0.001;
-      ring2.rotation.y -= 0.0025; ring2.rotation.z += 0.0015;
-
-      orbGroup.children.forEach((orb) => {
-        const u = orb.userData;
-        u.angle += 0.0015 * u.speed;
-        orb.position.x = Math.cos(u.angle) * u.radius;
-        orb.position.z = Math.sin(u.angle) * u.radius;
-        orb.position.y = Math.sin(Date.now() * 0.0001 + u.phase) * 0.3 + Math.sin(u.angle * 2) * 0.5;
-      });
-      orbGroup.rotation.y += 0.0005;
-      stars.rotation.y += 0.00005; stars.rotation.x += 0.00003;
-
-      knot.rotation.x += (mouseY * 0.03 - knot.rotation.x) * 0.005;
-      knot.rotation.y += (mouseX * 0.03 - knot.rotation.y) * 0.005;
-      wireShell.rotation.x = knot.rotation.x; wireShell.rotation.y = knot.rotation.y;
-
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-    if (window.innerWidth < 600) camera.position.z = 16;
-  </script>
 
   <script>
     // NAV SCROLL
@@ -2918,266 +2809,6 @@
 
     // YEAR
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // LIGHTBOX
-    function openLightbox(el) {
-      const lb = document.getElementById('lightbox');
-      const content = document.getElementById('lightbox-content');
-      content.innerHTML = '';
-      if (el.tagName === 'VIDEO') {
-        const clone = document.createElement('video');
-        clone.autoplay = true; clone.loop = true; clone.controls = true;
-        const src = el.querySelector('source');
-        if (src) { const s = document.createElement('source'); s.src = src.src; s.type = src.type; clone.appendChild(s); }
-        content.appendChild(clone);
-        clone.play().catch(() => {});
-      } else {
-        const img = document.createElement('img');
-        img.src = el.src;
-        content.appendChild(img);
-      }
-      lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-      document.getElementById('lightbox-content').innerHTML = '';
-      document.body.style.overflow = '';
-    }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
-    // CAROUSEL
-    var _carousels = {};
-    function carouselNext(id) {
-      var el = document.getElementById(id);
-      var maxScroll = el.scrollWidth - el.clientWidth;
-      el.scrollLeft >= maxScroll - 5 ? el.scrollTo({ left: 0, behavior: 'smooth' }) : el.scrollBy({ left: el.clientWidth, behavior: 'smooth' });
-      if (_carousels[id]) {
-        if (_carousels[id].cancel) _carousels[id].cancel(); else _carousels[id].running = false;
-        clearTimeout(_carousels[id].resumeTimer);
-        _carousels[id].resumeTimer = setTimeout(function() { 
-          if (_carousels[id].resume) _carousels[id].resume(); else _carousels[id].running = true; 
-        }, 10000);
-      }
-    }
-    function carouselPrev(id) {
-      var el = document.getElementById(id);
-      el.scrollLeft <= 5 ? el.scrollTo({ left: el.scrollWidth, behavior: 'smooth' }) : el.scrollBy({ left: -el.clientWidth, behavior: 'smooth' });
-      if (_carousels[id]) {
-        if (_carousels[id].cancel) _carousels[id].cancel(); else _carousels[id].running = false;
-        clearTimeout(_carousels[id].resumeTimer);
-        _carousels[id].resumeTimer = setTimeout(function() { 
-          if (_carousels[id].resume) _carousels[id].resume(); else _carousels[id].running = true; 
-        }, 10000);
-      }
-    }
-
-    // AUTO-ROTATING CAROUSELS
-    document.addEventListener('DOMContentLoaded', function() {
-      var carousels = [
-        { id: 'baCarousel', el: document.getElementById('baCarousel'), interval: 6000 },
-        { id: 'editCarousel', el: document.getElementById('editCarousel'), interval: 6500 },
-        { id: 'portfolioCarousel', el: document.getElementById('portfolioCarousel'), interval: 5000 }
-      ];
-      carousels.forEach(function(c) {
-        if (!c.el) return;
-        var state = { running: true };
-        _carousels[c.id] = state;
-        var activeTimer = null;
-
-        // IntersectionObserver für Videos: Startet das Video neu, sobald der Slide sichtbar wird
-        var io = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              var v = entry.target.querySelector('video');
-              if (v) {
-                v.currentTime = 0;
-                var p = v.play();
-                if (p !== undefined) p.catch(function(){});
-              }
-            }
-          });
-        }, { root: c.el, threshold: 0.6 });
-        
-        c.el.querySelectorAll('.showcase-slide, .portfolio-slide').forEach(function(slide) {
-          io.observe(slide);
-        });
-
-        // scrollend-Listener (einmalig pro advance), wird vor jedem Scroll neu gesetzt
-        var scrollEndHandler = null;
-        var scrollFallback = null;
-
-        function onScrollEnd() {
-          if (scrollEndHandler) {
-            c.el.removeEventListener('scrollend', scrollEndHandler);
-            scrollEndHandler = null;
-          }
-          if (scrollFallback) { clearTimeout(scrollFallback); scrollFallback = null; }
-          state._wrapping = false;
-          if (!state.running) return;
-          schedule();
-        }
-
-        function advance() {
-          if (!state.running) return;
-          // aktiven Timer zurücksetzen, bevor gescrollt wird
-          if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
-          var maxScroll = c.el.scrollWidth - c.el.clientWidth;
-          var isLastSlide = c.el.scrollLeft >= maxScroll - (c.el.clientWidth / 2);
-
-          if (isLastSlide) {
-            // Wrap zum ersten Slide – smooth-scroll, damit scrollend feuert
-            state._wrapping = true;
-            scrollEndHandler = onScrollEnd;
-            c.el.addEventListener('scrollend', scrollEndHandler, { once: true });
-            scrollFallback = setTimeout(function() {
-              if (scrollEndHandler) {
-                c.el.removeEventListener('scrollend', scrollEndHandler);
-                scrollEndHandler = null;
-                state._wrapping = false;
-                if (state.running) schedule();
-              }
-            }, 2000);
-            c.el.scrollTo({ left: 0, behavior: 'smooth' });
-          } else {
-            // Normal zum nächsten Slide scrollen
-            // scrollend-Listener vorbereiten (einmalig)
-            scrollEndHandler = onScrollEnd;
-            c.el.addEventListener('scrollend', scrollEndHandler, { once: true });
-            // Fallback: falls scrollend nicht feuert (z.B. alter Browser)
-            scrollFallback = setTimeout(function() {
-              if (scrollEndHandler) {
-                c.el.removeEventListener('scrollend', scrollEndHandler);
-                scrollEndHandler = null;
-                if (state.running) schedule();
-              }
-            }, 2000);
-            c.el.scrollBy({ left: c.el.clientWidth, behavior: 'smooth' });
-          }
-        }
-
-        function waitAndAdvance(slide, fallbackInterval) {
-          var video = slide && slide.querySelector('video');
-          // Falls noch ein Timer aktiv ist (Sicherheit), diesen löschen
-          if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
-          // Festes Intervall als Fallback setzen
-          activeTimer = setTimeout(advance, fallbackInterval);
-
-          if (video) {
-            // Um das 'ended' Event zu erhalten, muss loop deaktiviert werden
-            var hadLoop = video.loop;
-            video.loop = false;
-            video._loopState = hadLoop;
-            state._waitingForVideo = true;
-            
-            var endedHandler = function() {
-              state._waitingForVideo = false;
-              if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
-              video.loop = hadLoop;
-              video.removeEventListener('ended', endedHandler);
-              video.removeEventListener('error', errorHandler);
-              advance();
-            };
-            var errorHandler = function() {
-              state._waitingForVideo = false;
-              if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
-              video.loop = hadLoop;
-              video.removeEventListener('ended', endedHandler);
-              video.removeEventListener('error', errorHandler);
-              advance();
-            };
-            if (!video._endedHandlers) video._endedHandlers = [];
-            video._endedHandlers.push(endedHandler);
-            video._endedHandlers.push(errorHandler);
-            
-            var playPromise = video.play();
-            if (playPromise !== undefined) {
-              playPromise.then(function() {
-                // Video spielt erfolgreich ab: Fallback-Timer löschen, damit bis zum Ende gewartet wird
-                if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
-              }).catch(function() { 
-                state._waitingForVideo = false;
-              });
-            } else {
-              if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
-            }
-            video.addEventListener('ended', endedHandler);
-            video.addEventListener('error', errorHandler);
-          }
-        }
-
-
-        // watchAuto: periodischer Watchdog (alle 4s) – startet tote Carousels neu
-        // Wichtig: nur wenn state.running && kein Timer/scrollend pending ist
-        var watchTimer = setInterval(function() {
-          if (!state.running) return;
-          // Nicht eingreifen während eines Wrap-Scrolls oder wenn wir auf ein Video warten
-          if (state._wrapping || state._waitingForVideo) return;
-          if (!activeTimer && !scrollEndHandler && !scrollFallback) {
-            schedule();
-          }
-        }, 4000);
-
-        function schedule() {
-          if (!state.running) return;
-          var slides = c.el.querySelectorAll('.showcase-slide, .portfolio-slide');
-          var idx = Math.round(c.el.scrollLeft / c.el.clientWidth);
-          // Absicherung: idx auf gültigen Bereich begrenzen
-          if (idx < 0) idx = 0;
-          if (idx >= slides.length) idx = slides.length - 1;
-          var currentSlide = slides[idx] || slides[slides.length - 1];
-          waitAndAdvance(currentSlide, c.interval);
-        }
-        schedule();
-
-        // Benutzer-Interaktion: Timer/Video abbrechen
-        function cancelAuto() {
-          state.running = false;
-          state._wrapping = false;
-          state._waitingForVideo = false;
-          if (activeTimer) { clearTimeout(activeTimer); activeTimer = null; }
-          // scrollend-Listener aufräumen falls pending
-          if (scrollEndHandler) {
-            c.el.removeEventListener('scrollend', scrollEndHandler);
-            scrollEndHandler = null;
-          }
-          if (scrollFallback) { clearTimeout(scrollFallback); scrollFallback = null; }
-          // Video-Listener aufräumen (alle Videos im Karussell) + loop wiederherstellen
-          var allVids = c.el.querySelectorAll('video');
-          allVids.forEach(function(v) {
-            if (v._loopState !== undefined) { v.loop = v._loopState; v._loopState = undefined; }
-            var clones = v._endedHandlers || [];
-            clones.forEach(function(h) {
-              v.removeEventListener('ended', h);
-              v.removeEventListener('error', h);
-            });
-            v._endedHandlers = null;
-          });
-        }
-        function resumeAuto() {
-          state.running = true;
-          state._wrapping = false;
-          // Vorherigen Timeout löschen, falls mehrfach ausgelöst
-          if (state._resumeTimeout) { clearTimeout(state._resumeTimeout); state._resumeTimeout = null; }
-          // Nach Interaktion: nach kurzer Verzögerung automatisch neustarten
-          state._resumeTimeout = setTimeout(function() {
-            if (!state.running) return;
-            if (!activeTimer && !scrollEndHandler) {
-              schedule();
-            }
-          }, 1500);
-        }
-        
-        state.cancel = cancelAuto;
-        state.resume = resumeAuto;
-
-        c.el.addEventListener('mousedown', cancelAuto);
-        c.el.addEventListener('mouseup', resumeAuto);
-        c.el.addEventListener('mouseleave', resumeAuto);
-        c.el.addEventListener('touchstart', cancelAuto);
-        c.el.addEventListener('touchend', resumeAuto);
-      });
-    });
 
     // MUSIC GENRE TABS
     document.addEventListener('DOMContentLoaded', function() {
@@ -3436,10 +3067,10 @@
         'services-title': { de: 'Was wir <span class="gradient">können</span>', ru: 'Что мы <span class="gradient">умеем</span>', en: 'What we <span class="gradient">do</span>' },
         'services-sub': { de: 'Von Bildgenerierung bis Webseite – alles aus einer Hand.', ru: 'От генерации изображений до веб-сайтов — всё из одних рук.', en: 'From image generation to websites – everything from a single source.' },
         'svc-img-title': { de: 'Bildgenerierung & -bearbeitung', ru: 'Генерация и обработка изображений', en: 'Image Generation & Editing' },
-        'svc-img-desc': { de: 'Hochwertige KI-Bilder, Retusche, Hintergrundwechsel, Kolorierung und mehr – auf Knopfdruck.', ru: 'Высококачественные изображения ИИ, ретушь, замена фона, колоризация и многое другое одним нажатием.', en: 'High-quality AI images, retouching, background swaps, colorization and more – at the click of a button.' },
+        'svc-img-desc': { de: 'Porträts retuschieren, Hintergründe ändern und Motive gestalten – passend für Profil, Druck oder Social Media.', ru: 'Высококачественные изображения ИИ, ретушь, замена фона, колоризация и многое другое одним нажатием.', en: 'High-quality AI images, retouching, background swaps, colorization and more – at the click of a button.' },
         'svc-img-tag': { de: 'KI Vision', ru: 'ИИ Видение', en: 'AI Vision' },
         'svc-video-title': { de: 'Video & Animation', ru: 'Видео и анимация', en: 'Video & Animation' },
-        'svc-video-desc': { de: 'Fotos in Bewegung, Cinemagraphs, KI-Videos und animierte Logos für maximalen Eindruck.', ru: 'Фото в движении, синемаграфы, видео на ИИ и анимированные логотипы для максимального впечатления.', en: 'Photos in motion, cinemagraphs, AI videos and animated logos for maximum impact.' },
+        'svc-video-desc': { de: 'Fotos animieren, kurze Clips gestalten und Logos bewegen – für Erinnerungen, Reels oder deinen Markenauftritt.', ru: 'Фото в движении, синемаграфы, видео на ИИ и анимированные логотипы для максимального впечатления.', en: 'Photos in motion, cinemagraphs, AI videos and animated logos for maximum impact.' },
         'svc-video-tag': { de: 'KI Video', ru: 'ИИ Видео', en: 'AI Video' },
         'svc-audio-title': { de: 'Musik & Audio', ru: 'Музыка и аудио', en: 'Music & Audio' },
         'svc-audio-desc': { de: 'Individuelle Jingles, Songs und Soundtracks – personalisiert für Marke, Event oder Projekt.', ru: 'Индивидуальные джинглы, песни и саундтреки — персонализированные для бренда, события или проекта.', en: 'Custom jingles, songs and soundtracks – personalized for your brand, event or project.' },
@@ -3448,10 +3079,10 @@
         'svc-restore-desc': { de: 'Alte Fotos wiederherstellen, schärfen und hochskalieren – Erinnerungen in neuem Glanz.', ru: 'Восстановление старых фото, повышение чёткости и масштабирование — воспоминания в новом блеске.', en: 'Restore, sharpen and upscale old photos – memories in a new light.' },
         'svc-restore-tag': { de: 'KI Enhance', ru: 'ИИ Улучшение', en: 'AI Enhance' },
         'svc-prod-title': { de: 'Produktfotografie & CGI', ru: 'Продуктовая съёмка и CGI', en: 'Product Photography & CGI' },
-        'svc-prod-desc': { de: 'Atemberaubende Produktbilder und fotorealistische CGI-Szenen für Kampagnen und Kataloge.', ru: 'Потрясающие изображения продуктов и фотореалистичные CGI-сцены для кампаний и каталогов.', en: 'Stunning product images and photorealistic CGI scenes for campaigns and catalogs.' },
+        'svc-prod-desc': { de: 'Aus deinen Produktfotos entstehen neue Szenen für Shop, Kampagne und Katalog – abgestimmt auf Motiv und Format.', ru: 'Потрясающие изображения продуктов и фотореалистичные CGI-сцены для кампаний и каталогов.', en: 'Stunning product images and photorealistic CGI scenes for campaigns and catalogs.' },
         'svc-prod-tag': { de: 'KI Studio', ru: 'ИИ Студия', en: 'AI Studio' },
         'svc-custom-title': { de: 'Individuelle KI-Lösungen', ru: 'Индивидуальные ИИ-решения', en: 'Custom AI Solutions' },
-        'svc-custom-desc': { de: 'Maßgeschneiderte KI-Workflows und Modelle – genau auf Ihre Anforderungen zugeschnitten.', ru: 'Индивидуальные ИИ-процессы и модели — точно под ваши требования.', en: 'Tailored AI workflows and models – precisely fitted to your requirements.' },
+        'svc-custom-desc': { de: 'Du hast eine besondere Idee? Wir besprechen Ausgangsmaterial, gewünschtes Ergebnis und einen passenden Ablauf.', ru: 'Индивидуальные ИИ-процессы и модели — точно под ваши требования.', en: 'Tailored AI workflows and models – precisely fitted to your requirements.' },
         'svc-custom-tag': { de: 'KI Custom', ru: 'ИИ Кастом', en: 'AI Custom' },
         'svc-web-title': { de: 'Kleine Webseiten', ru: 'Небольшие веб-сайты', en: 'Small Websites' },
         'svc-web-desc': { de: 'Einfache, saubere Websites für Kleinunternehmer, Vereine und Privatpersonen. 1–5 Seiten, responsive, ohne Abo.', ru: 'Простые чистые сайты для малого бизнеса, клубов и частных лиц. 1–5 страниц, адаптивно, без подписки.', en: 'Simple, clean websites for small businesses, clubs and individuals. 1–5 pages, responsive, no subscription.' },
@@ -3683,10 +3314,14 @@
           hamburger.setAttribute('aria-label', translations['hamburger-label'][lang]);
         }
 
+        document.documentElement.lang = lang;
+        document.dispatchEvent(new CustomEvent("studio-language", { detail: lang }));
+
         // Save preference
         try { localStorage.setItem('kreativki-lang', lang); } catch(e) {}
       }
 
+      window.studioTranslations = translations;
       // Expose globally
       window.switchLanguage = switchLanguage;
 
